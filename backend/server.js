@@ -31,19 +31,8 @@ const supabase = createClient(
     process.env.SUPABASE_SERVICE_KEY
 );
 
-app.get('/', async (req, res) => {
-    try {
-        const { data, error } = await supabase.from('student').select('*');
-        if (error) throw error;
-        return res.json({
-            message: 'Backend is running!',
-            studentData: data,
-            timestamp: new Date().toISOString()
-        });
-    } catch (error) {
-        console.error('Health check error:', error.message);
-        return res.status(500).json({ error: 'Error fetching data', details: error.message });
-    }
+app.get('/', (req, res) => {
+    return res.json({ message: 'Backend is running!', timestamp: new Date().toISOString() });
 });
 
 app.get('/student', async (req, res) => {
