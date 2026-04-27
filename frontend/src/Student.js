@@ -24,9 +24,10 @@ const getData=()=> {
   .catch((err) => console.log(err));
 }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     getData()
-  }, []); 
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
